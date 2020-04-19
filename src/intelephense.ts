@@ -50,7 +50,11 @@ export namespace Intelephense {
     let symbolCache: Cache;
     let refCache: Cache;
     let stateCache: Cache;
-    let apiTools;
+    let apiTools: {
+        symbolStore: SymbolStore,
+        documentStore: ParsedDocumentStore,
+        refStore: ReferenceStore,
+    };
     const stateTimestampKey = 'timestamp';
     const knownDocsFilename = 'known_uris.json';
     const refStoreCacheKey = 'referenceStore';
