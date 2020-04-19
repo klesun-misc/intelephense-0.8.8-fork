@@ -49,6 +49,7 @@ export namespace Intelephense {
     let symbolCache: Cache;
     let refCache: Cache;
     let stateCache: Cache;
+    let apiTools;
     const stateTimestampKey = 'timestamp';
     const knownDocsFilename = 'known_uris.json';
     const refStoreCacheKey = 'referenceStore';
@@ -91,6 +92,8 @@ export namespace Intelephense {
         hoverProvider = new HoverProvider(documentStore, symbolStore, refStore);
         highlightProvider = new HighlightProvider(documentStore, symbolStore, refStore);
 
+        apiTools = {symbolStore, documentStore, refStore};
+
         //keep stores in sync
         documentStore.parsedDocumentChangeEvent.subscribe((args) => {
             symbolStore.onParsedDocumentChange(args);
@@ -111,7 +114,7 @@ export namespace Intelephense {
                     return;
                 }
                 cacheTimestamp = data;
-                
+
             }).then(()=>{
                 return readArrayFromDisk(path.join(storagePath, 'state', knownDocsFilename));
             }).then((uris)=>{
@@ -309,7 +312,7 @@ export namespace Intelephense {
 
     export function editDocument(
         textDocument: lsp.VersionedTextDocumentIdentifier,
-        contentChanges: lsp.TextDocumentContentChangeEvent[]) {
+        contentChanges: lsp.TextDocumentChangeEvent[]) {
 
         let parsedDocument = documentStore.find(textDocument.uri);
         if (parsedDocument) {
@@ -435,6 +438,10 @@ export namespace Intelephense {
         }
     }
 
+    /** for other extensions to reuse this lsp */
+    export function getApiTools() {
+        return apiTools;
+    }
 }
 
 export interface IntelephenseConfig {
