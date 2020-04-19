@@ -26,6 +26,7 @@ import * as path from 'path';
 export { LanguageRange } from './parsedDocument';
 import { HoverProvider } from './hoverProvider';
 import { HighlightProvider } from './highlightProvider';
+import { TextDocumentContentChangeEvent } from 'vscode-languageserver-protocol';
 
 
 export namespace Intelephense {
@@ -312,7 +313,7 @@ export namespace Intelephense {
 
     export function editDocument(
         textDocument: lsp.VersionedTextDocumentIdentifier,
-        contentChanges: lsp.TextDocumentChangeEvent[]) {
+        contentChanges: TextDocumentContentChangeEvent[]) {
 
         let parsedDocument = documentStore.find(textDocument.uri);
         if (parsedDocument) {

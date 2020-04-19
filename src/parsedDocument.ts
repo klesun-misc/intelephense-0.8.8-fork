@@ -12,6 +12,7 @@ import {
     Predicate, Traversable, HashedLocation
 } from './types';
 import * as util from './util';
+import { TextDocumentContentChangeEvent } from 'vscode-languageserver-protocol';
 
 const textDocumentChangeDebounceWait = 250;
 
@@ -91,16 +92,16 @@ export class ParsedDocument implements Traversable<Phrase | Token>{
         return visitor;
     }
 
-    applyChanges(contentChanges: lsp.TextDocumentContentChangeEvent[]) {
+    applyChanges(contentChanges: TextDocumentContentChangeEvent[]) {
 
-        let change: lsp.TextDocumentContentChangeEvent;
+        let change: TextDocumentContentChangeEvent;
 
         for (let n = 0, l = contentChanges.length; n < l; ++n) {
             change = contentChanges[n];
-            if(!change.range) {
-                this._textDocument.text = change.text;
-            } else {
+            if ('range' in change && change.range) {
                 this._textDocument.applyEdit(change.range.start, change.range.end, change.text);
+            } else {
+                this._textDocument.text = change.text;
             }
         }
 
