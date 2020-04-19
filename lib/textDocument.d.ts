@@ -16,5 +16,5 @@ export declare class TextDocument {
     positionAtOffset(offset: number): Position;
     offsetAtPosition(pos: Position): number;
     applyEdit(start: Position, end: Position, text: string): void;
-    private _textLineOffsets(text, offset);
+    private _textLineOffsets;
 }

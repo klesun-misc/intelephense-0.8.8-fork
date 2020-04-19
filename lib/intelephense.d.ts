@@ -1,8 +1,11 @@
-import { LanguageRange } from './parsedDocument';
+import { ParsedDocumentStore, LanguageRange } from './parsedDocument';
+import { SymbolStore } from './symbolStore';
 import { PublishDiagnosticsEventArgs } from './diagnosticsProvider';
 import * as lsp from 'vscode-languageserver-types';
+import { ReferenceStore } from './reference';
 import { LogWriter } from './logger';
 export { LanguageRange } from './parsedDocument';
+import { TextDocumentContentChangeEvent } from 'vscode-languageserver-protocol';
 export declare namespace Intelephense {
     function onPublishDiagnostics(fn: (args: PublishDiagnosticsEventArgs) => void): void;
     function initialise(options: InitialisationOptions): Promise<void>;
@@ -17,12 +20,12 @@ export declare namespace Intelephense {
     function setConfig(config: IntelephenseConfig): void;
     function openDocument(textDocument: lsp.TextDocumentItem): void;
     function closeDocument(textDocument: lsp.TextDocumentIdentifier): Promise<void>;
-    function editDocument(textDocument: lsp.VersionedTextDocumentIdentifier, contentChanges: lsp.TextDocumentContentChangeEvent[]): void;
+    function editDocument(textDocument: lsp.VersionedTextDocumentIdentifier, contentChanges: TextDocumentContentChangeEvent[]): void;
     function documentSymbols(textDocument: lsp.TextDocumentIdentifier): lsp.SymbolInformation[];
     function workspaceSymbols(query: string): lsp.SymbolInformation[];
     function provideCompletions(textDocument: lsp.TextDocumentIdentifier, position: lsp.Position): lsp.CompletionList;
     function provideSignatureHelp(textDocument: lsp.TextDocumentIdentifier, position: lsp.Position): lsp.SignatureHelp;
-    function provideDefinition(textDocument: lsp.TextDocumentIdentifier, position: lsp.Position): lsp.Location | lsp.Location[];
+    function provideDefinition(textDocument: lsp.TextDocumentIdentifier, position: lsp.Position): lsp.Definition;
     function discoverSymbols(textDocument: lsp.TextDocumentItem): number | Promise<number>;
     function discoverReferences(textDocument: lsp.TextDocumentItem): number;
     function forget(uri: string): void;
@@ -33,6 +36,11 @@ export declare namespace Intelephense {
     function provideDocumentFormattingEdits(doc: lsp.TextDocumentIdentifier, formatOptions: lsp.FormattingOptions): lsp.TextEdit[];
     function provideDocumentRangeFormattingEdits(doc: lsp.TextDocumentIdentifier, range: lsp.Range, formatOptions: lsp.FormattingOptions): lsp.TextEdit[];
     function provideReferences(doc: lsp.TextDocumentIdentifier, pos: lsp.Position, context: lsp.ReferenceContext): Promise<lsp.Location[]>;
+    function getApiTools(): {
+        symbolStore: SymbolStore;
+        documentStore: ParsedDocumentStore;
+        refStore: ReferenceStore;
+    };
 }
 export interface IntelephenseConfig {
     debug: {

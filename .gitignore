@@ -1,0 +1,7 @@
+/.idea/
+/node_modules/
+# not sure about this one, but if I get it right, it is
+# not considered during dependency installation anyway
+# related blog: https://classic.yarnpkg.com/blog/2016/11/24/lockfiles-for-all/
+# (it does conclude that it's better to add the lock, but the arguments that from same blog sound much more reasonable to me)
+/package-lock.json

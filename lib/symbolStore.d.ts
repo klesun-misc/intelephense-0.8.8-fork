@@ -27,7 +27,7 @@ export declare class SymbolTable implements Traversable<PhpSymbol> {
     scopeSymbols(): PhpSymbol[];
     symbolAtPosition(position: Position): PhpSymbol;
     contains(s: PhpSymbol): boolean;
-    private _isScopeSymbol(s);
+    private _isScopeSymbol;
     static fromJSON(data: any): SymbolTable;
     static create(parsedDocument: ParsedDocument, externalOnly?: boolean): SymbolTable;
     static readBuiltInSymbols(): SymbolTable;
@@ -57,11 +57,11 @@ export declare class SymbolStore {
     findBaseMember(symbol: PhpSymbol): PhpSymbol;
     symbolLocation(symbol: PhpSymbol): Location;
     referenceToTypeString(ref: Reference): string;
-    private _sortMatches(query, matches);
-    private _classOrInterfaceFilter(s);
-    private _classInterfaceTraitFilter(s);
-    private _indexSymbols(root);
-    private _indexFilter(s);
+    private _sortMatches;
+    private _classOrInterfaceFilter;
+    private _classInterfaceTraitFilter;
+    private _indexSymbols;
+    private _indexFilter;
 }
 export declare class SymbolTableIndex {
     private _tables;
@@ -79,8 +79,8 @@ export declare class SymbolTableIndex {
         _count: number;
     };
     fromJSON(data: any): void;
-    private _createCompareFn(uri);
-    private _createUriFindFn(uri);
+    private _createCompareFn;
+    private _createUriFindFn;
 }
 export interface SymbolTableIndexNode {
     hash: number;

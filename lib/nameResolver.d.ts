@@ -14,6 +14,6 @@ export declare class NameResolver {
     resolveNotFullyQualified(notFqn: string, kind?: SymbolKind, resolveStatic?: boolean): string;
     concatNamespaceName(prefix: string, suffix: string): string;
     matchImportedSymbol(text: string, kind: SymbolKind): PhpSymbol;
-    private _resolveQualified(name, pos);
-    private _resolveUnqualified(name, kind);
+    private _resolveQualified;
+    private _resolveUnqualified;
 }

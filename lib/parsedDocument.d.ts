@@ -1,6 +1,7 @@
 import { Phrase, Token, TokenType, PhraseType } from 'php7parser';
 import * as lsp from 'vscode-languageserver-types';
 import { TreeVisitor, Event, Predicate, Traversable, HashedLocation } from './types';
+import { TextDocumentContentChangeEvent } from 'vscode-languageserver-protocol';
 export interface NodeTransform {
     phraseType?: PhraseType;
     tokenType?: TokenType;
@@ -29,7 +30,7 @@ export declare class ParsedDocument implements Traversable<Phrase | Token> {
     wordAtOffset(offset: number): string;
     flush(): void;
     traverse(visitor: TreeVisitor<Phrase | Token>): TreeVisitor<Token | Phrase>;
-    applyChanges(contentChanges: lsp.TextDocumentContentChangeEvent[]): void;
+    applyChanges(contentChanges: TextDocumentContentChangeEvent[]): void;
     tokenRange(t: Token): lsp.Range;
     nodeHashedLocation(node: Phrase | Token): HashedLocation;
     nodeLocation(node: Phrase | Token): lsp.Location;

@@ -22,8 +22,8 @@ export declare class DiagnosticsProvider {
     remove(uri: string): void;
     has(uri: string): boolean;
     debounceWait: number;
-    private _diagnose(uri);
-    private _parseErrorToDiagnostic(err, doc);
-    private _message(err);
-    private _errorRange(err, doc);
+    private _diagnose;
+    private _parseErrorToDiagnostic;
+    private _message;
+    private _errorRange;
 }

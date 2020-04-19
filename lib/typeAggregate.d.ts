@@ -5,7 +5,7 @@ export declare const enum MemberMergeStrategy {
     None = 0,
     Override = 1,
     Documented = 2,
-    Base = 3,
+    Base = 3
 }
 export declare class TypeAggregate {
     symbolStore: SymbolStore;
@@ -20,14 +20,14 @@ export declare class TypeAggregate {
     associated(filter?: Predicate<PhpSymbol>): PhpSymbol[];
     firstMember(predicate: Predicate<PhpSymbol>): PhpSymbol;
     members(mergeStrategy: MemberMergeStrategy, predicate?: Predicate<PhpSymbol>): PhpSymbol[];
-    private _resolveThisAndStaticReturnType(members, name);
-    private _classMembers(associated, strategy, predicate?);
-    private _interfaceMembers(interfaces, predicate?);
-    private _traitMembers(traits, predicate?);
-    private _mergeMembers(symbols, strategy);
-    private hasInheritdoc(description);
-    private _getAssociated();
-    private _symbolsAssociatedReduce(accum, current);
-    private _associatedIterator();
+    private _resolveThisAndStaticReturnType;
+    private _classMembers;
+    private _interfaceMembers;
+    private _traitMembers;
+    private _mergeMembers;
+    private hasInheritdoc;
+    private _getAssociated;
+    private _symbolsAssociatedReduce;
+    private _associatedIterator;
     static create(symbolStore: SymbolStore, fqn: string): TypeAggregate;
 }

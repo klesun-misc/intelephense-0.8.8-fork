@@ -13,7 +13,7 @@ export declare const enum SymbolKind {
     Namespace = 512,
     ClassConstant = 1024,
     Constructor = 2048,
-    File = 4096,
+    File = 4096
 }
 export declare const enum SymbolModifier {
     None = 0,
@@ -29,7 +29,7 @@ export declare const enum SymbolModifier {
     Anonymous = 512,
     Reference = 1024,
     Variadic = 2048,
-    Use = 4096,
+    Use = 4096
 }
 export interface PhpSymbolDoc {
     description?: string;

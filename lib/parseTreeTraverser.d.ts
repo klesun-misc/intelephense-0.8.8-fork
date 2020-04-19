@@ -22,7 +22,7 @@ export declare class ParseTreeTraverser extends TreeTraverser<Phrase | Token> {
     position(pos: Position): Token;
     clone(): ParseTreeTraverser;
     prevToken(skipTrivia?: boolean): Token | Phrase;
-    private _lastToken(spine, skipTrivia?);
+    private _lastToken;
     readonly isDeclarationName: boolean;
-    private _isDeclarationPhrase(node);
+    private _isDeclarationPhrase;
 }

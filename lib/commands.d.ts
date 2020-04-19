@@ -8,6 +8,6 @@ export declare class NameTextEditProvider {
     refStore: ReferenceStore;
     constructor(symbolStore: SymbolStore, docStore: ParsedDocumentStore, refStore: ReferenceStore);
     provideContractFqnTextEdits(uri: string, position: Position, alias?: string): TextEdit[];
-    private _fullyQualifiedNamePhrase(position, doc, table, refTable);
-    private _isFullyQualifiedName(node);
+    private _fullyQualifiedNamePhrase;
+    private _isFullyQualifiedName;
 }

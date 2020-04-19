@@ -17,9 +17,9 @@ export declare class UseDeclarationHelper {
     findUseSymbolByFqn(fqn: string): PhpSymbol;
     findUseSymbolByName(name: string): PhpSymbol;
     findNamespaceUseClauseByRange(range: Range): Phrase;
-    private _isUseDeclarationSymbol(s);
-    private _insertAfterNode();
-    private _insertAfterNodeRange();
-    private _insertPosition();
-    private _isNamespaceAliasingClause(node);
+    private _isUseDeclarationSymbol;
+    private _insertAfterNode;
+    private _insertAfterNodeRange;
+    private _insertPosition;
+    private _isNamespaceAliasingClause;
 }

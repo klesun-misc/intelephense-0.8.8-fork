@@ -48,7 +48,7 @@ export declare class TreeTraverser<T extends TreeLike> {
     ancestor(predicate: Predicate<T>): T;
     parent(): T;
     clone(): TreeTraverser<T>;
-    private _traverse(treeNode, visitor, spine);
+    private _traverse;
 }
 export interface Traversable<T extends TreeLike> {
     traverse(visitor: TreeVisitor<T>): TreeVisitor<T>;
@@ -120,10 +120,10 @@ export declare class NameIndex<T> {
     find(text: string): T[];
     toJSON(): NameIndexNode<T>[];
     fromJSON(data: NameIndexNode<T>[]): void;
-    private _nodeMatch(lcText);
-    private _nodeFind(lcText);
-    private _insertNode(node);
-    private _deleteNode(node);
+    private _nodeMatch;
+    private _nodeFind;
+    private _insertNode;
+    private _deleteNode;
 }
 export declare type Comparer<T> = (a: T, b: T) => number;
 export declare class SortedList<T> {
@@ -136,5 +136,5 @@ export declare class SortedList<T> {
     add(item: T): void;
     remove(compareFn: (t: T) => number): T;
     find(compareFn: (t: T) => number): T;
-    private _createCompareClosure(item, cmpFn);
+    private _createCompareClosure;
 }
