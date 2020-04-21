@@ -1,5 +1,5 @@
 import { Predicate, HashedLocation } from './types';
-export declare const enum SymbolKind {
+export enum SymbolKind {
     None = 0,
     Class = 1,
     Interface = 2,
@@ -15,7 +15,7 @@ export declare const enum SymbolKind {
     Constructor = 2048,
     File = 4096
 }
-export declare const enum SymbolModifier {
+export enum SymbolModifier {
     None = 0,
     Public = 1,
     Protected = 2,

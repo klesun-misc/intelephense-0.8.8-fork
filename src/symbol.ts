@@ -10,7 +10,7 @@ import { Location, Range } from 'vscode-languageserver-types';
 import { Predicate, HashedLocation } from './types';
 import * as util from './util';
 
-export const enum SymbolKind {
+export enum SymbolKind {
     None = 0,
     Class = 1 << 0,
     Interface = 1 << 1,
@@ -27,7 +27,7 @@ export const enum SymbolKind {
     File = 1 << 12
 }
 
-export const enum SymbolModifier {
+export enum SymbolModifier {
     None = 0,
     Public = 1 << 0,
     Protected = 1 << 1,
@@ -198,7 +198,7 @@ export namespace PhpSymbol {
 
     /**
      * Shallow clone
-     * @param s 
+     * @param s
      */
     export function clone(s: PhpSymbol): PhpSymbol {
         return {
@@ -270,7 +270,7 @@ export namespace PhpSymbol {
 
     /**
      * uniqueness determined by name and symbol kind
-     * @param symbol 
+     * @param symbol
      */
     export function unique(symbols: PhpSymbol[]) {
 

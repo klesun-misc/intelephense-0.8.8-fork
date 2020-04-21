@@ -34,7 +34,7 @@
   "dependencies": {
     "JSONStream": "^1.3.2",
     "fs-extra": "^5.0.0",
-    "php7parser": "^1.0.8",
+    "php7parser": "git+https://github.com/klesun-misc/php7parser-1.0.8-fork.git#01138984a1bf4f456d70b6160fb482fa894a522e",
     "vscode-languageserver-protocol": "^3.15.3",
     "vscode-languageserver-types": "^3.15.1"
   },

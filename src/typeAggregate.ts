@@ -10,7 +10,7 @@ import { Predicate } from './types';
 import * as util from './util';
 import {TypeString} from './typeString';
 
-export const enum MemberMergeStrategy {
+export enum MemberMergeStrategy {
     None, //returns all symbols
     Override, //first matching member encountered is chosen ie prefer overrides
     Documented, //prefer first unless it has no doc and base does
@@ -96,7 +96,7 @@ export class TypeAggregate {
             kind = this._symbol.kind;
             name = this._symbol.name;
         }
-        
+
         let members:PhpSymbol[];
 
         switch (kind) {
@@ -130,7 +130,7 @@ export class TypeAggregate {
             s = members[n];
             if((s.kind & (SymbolKind.Method | SymbolKind.Property)) > 0 && s.doc && s.doc.type) {
                 type = TypeString.resolveThisOrStatic(s.doc.type, name);
-                
+
                 if(type !== s.doc.type) {
                     //clone the symbol to use resolved type
                     sClone = PhpSymbol.clone(s);
@@ -141,15 +141,15 @@ export class TypeAggregate {
             }
             resolved.push(s);
         }
-        
+
         return resolved;
 
     }
 
     /**
      * root type should be first element of associated array
-     * @param associated 
-     * @param predicate 
+     * @param associated
+     * @param predicate
      */
     private _classMembers(associated: PhpSymbol[], strategy:MemberMergeStrategy, predicate?: Predicate<PhpSymbol>) {
 
@@ -217,8 +217,8 @@ export class TypeAggregate {
                 (strategy === MemberMergeStrategy.Base)
             ) {
                 map[s.name] = s;
-            } 
-            
+            }
+
         }
 
         return Object.keys(map).map((v:string)=>{ return map[v]; });
@@ -257,7 +257,7 @@ export class TypeAggregate {
         let queue: PhpSymbol[] = [];
         let stub: PhpSymbol;
         let s:PhpSymbol;
-        
+
         if(Array.isArray(this._symbol)) {
             Array.prototype.push.apply(queue, this._symbol.reduce(this._symbolsAssociatedReduce, []));
         } else if(this._symbol.associated) {
@@ -297,7 +297,7 @@ export class TypeAggregate {
         if (!symbols.length) {
             return null;
         } else if(symbols.length === 1) {
-            return new TypeAggregate(symbolStore, symbols[0]);    
+            return new TypeAggregate(symbolStore, symbols[0]);
         } else {
             return new TypeAggregate(symbolStore, symbols);
         }
