@@ -1,5 +1,5 @@
 import { Predicate, HashedLocation } from './types';
-export enum SymbolKind {
+export declare enum SymbolKind {
     None = 0,
     Class = 1,
     Interface = 2,
@@ -15,7 +15,7 @@ export enum SymbolKind {
     Constructor = 2048,
     File = 4096
 }
-export enum SymbolModifier {
+export declare enum SymbolModifier {
     None = 0,
     Public = 1,
     Protected = 2,

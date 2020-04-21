@@ -1,7 +1,7 @@
 import { PhpSymbol } from './symbol';
 import { SymbolStore } from './symbolStore';
 import { Predicate } from './types';
-export enum MemberMergeStrategy {
+export declare enum MemberMergeStrategy {
     None = 0,
     Override = 1,
     Documented = 2,
